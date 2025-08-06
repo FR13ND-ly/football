@@ -1,0 +1,35 @@
+@if (game()) {
+  <div class="football">
+    <div class="information">
+      <div class="top">
+        <div id="timer">{{ liveGameTime() }}</div>
+        <span class="championship-title">{{ game().championshipTitle }}</span>
+      </div>
+      <div class="teams-info">
+        <section class="team-left">
+          <div class="color"><shirt [color]="game().leftTeamColor" /></div>
+          <span class="team-name">{{ game().leftTeamName }}</span>
+        </section>
+        <section class="score">
+          <div class="score-container">
+            <div class="flip" [class.animate]="leftAnimating()">
+              <div class="number old">{{ prevScoreLeft() }}</div>
+              <div class="number new">{{ scoreLeft() }}</div>
+            </div>
+          </div>
+          <span style="display: block; transform: translateY(-.1rem); margin-inline: .2rem;">-</span>
+          <div class="score-container">
+            <div class="flip" [class.animate]="rightAnimating()">
+              <div class="number old">{{ prevScoreRight() }}</div>
+              <div class="number new">{{ scoreRight() }}</div>
+            </div>
+          </div>
+        </section>
+        <section class="team-right">
+          <span class="team-name">{{ game().rightTeamName }}</span>
+          <div class="color"><shirt [color]="game().rightTeamColor" /></div>
+        </section>
+      </div>
+    </div>
+  </div>
+}

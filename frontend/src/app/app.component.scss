@@ -1,0 +1,153 @@
+.football {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    gap: 2rem;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: .3rem;
+    gap: .4rem;
+    box-sizing: border-box;
+}
+
+.teams-info {
+    display: flex;
+    color: white;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    border: 1px solid #5f5f5f;
+}
+
+.championship-title {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    font-size: calc(.8 * var(--font-size));
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    font-family: "Bebas Neue", sans-serif;
+    font-style: normal;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: calc(.666 * var(--height));
+}
+
+
+.team-left, .team-right {
+    display: flex;
+    align-items: center;
+    padding-inline: var(--padding-inline);
+    height: var(--height);
+    font-size: var(--font-size);
+    font-family: "Mozilla Headline", sans-serif;
+    position: relative;
+}
+
+.color  {
+    position: absolute;
+    top: .4rem;
+}
+
+.team-left .color {
+    left: calc(-.6 * var(--font-size));
+}
+
+.team-right .color {
+    right: calc(-.6 * var(--font-size));
+}
+
+.score {
+    display: flex;
+    background-color: #fff;
+    color: #000;
+    padding: .5rem;
+    scale: 1.15;
+    font-size: calc(1.4 * var(--font-size));
+    border-radius: .5rem;
+    padding-inline: calc(.5 * var(--padding-inline));
+    font-family: "JetBrains Mono", monospace;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 1px solid #ccc;
+    font-family: "Monomaniac One", sans-serif;
+    line-height: 1.9rem;
+    color: #252525;
+}
+
+#timer {
+    display: flex;
+    align-items: center;
+    padding-inline: calc(.2 * var(--padding-inline));
+    padding-block: calc(.1 * var(--padding-inline));
+    width: fit-content;
+    color: #000;
+    border-radius: var(--border-radius);
+    background-color: hsla(0, 100%, 50%, .9);
+    font-size: calc(.6 * var(--font-size));
+    font-family: "JetBrains Mono", monospace;
+    border: 1px solid #424242;
+    font-weight: bold;
+    height: fit-content;
+}
+
+.menu {
+    position: absolute;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #1d1d1d;
+}
+
+.score-left.animate,
+.score-right.animate {
+  animation: pop 0.6s ease;
+  font-weight: bold;
+
+  .old {
+    display: block;
+  }
+}
+
+.score-container {
+  display: inline-block;
+  overflow: hidden;
+  height: 2.1rem;
+  position: relative;
+}
+
+.flip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  transform: translateY(0%);
+}
+
+.flip.animate {
+  transition: transform 0.5s;
+  transform: translateY(-53%);
+  .old {
+    display: block;
+  }
+}
+
+.number {
+  text-align: center;
+  font-weight: bold;
+}
+
+.old {
+    display: none;
+}
