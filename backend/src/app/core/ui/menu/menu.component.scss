@@ -1,0 +1,36 @@
+:host {
+    flex-shrink: 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    border-left: 1px solid #000;
+}
+
+a {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: #000;
+    text-decoration: none;
+    padding: 1rem 4rem 1rem 1rem;
+    border-left: 2px solid transparent;
+    &:hover {
+        background-color: #f8f8f8;
+    }
+    .material-symbols-outlined {
+        transition: .2s;
+        font-variation-settings: 'FILL' 0;
+    }
+    
+}
+
+.active {
+    border-left-color: #000;
+    font-weight: bold;
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 1;
+    }
+}

@@ -1,0 +1,15 @@
+header {
+    position: absolute;
+    width: 100vw;
+    top: 0;
+    height: 4rem;
+    background-color: black;
+    z-index: 2;
+    padding-left: 1.6rem;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    h2 {
+        color: #fff;
+    }
+}

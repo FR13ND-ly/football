@@ -1,0 +1,54 @@
+<div class="score">
+    <button (click)="onAddGoal('left')">
+        <span class="material-symbols-outlined">add</span>
+    </button>
+    {{ game().leftTeamName }} <h1>{{ game().scoreLeft }} : {{ game().scoreRight }}</h1> {{ game().rightTeamName }}
+    <button (click)="onAddGoal('right')">
+        <span class="material-symbols-outlined">add</span>
+    </button>
+</div>
+
+<div class="goals">
+    <section>
+    @for (goal of goals(); track goal.key) {
+        @if (goal.team == 'left') {
+        <article>
+            <shirt size="8" [color]="{
+                hands: game().leftTeamColor.hands,
+                shirt: game().leftTeamColor.shirt
+            }" />
+            <section class="details">
+                <b>{{ game().leftTeamName }}</b>
+                <input [(ngModel)]="goal.playerNumber">
+                <input [(ngModel)]="goal.playerName">
+                <div class="actions">
+                    <button (click)="onEditGoal(goal)">Actualizează</button>
+                    <button (click)="onDeleteGoal(goal)">Șterge</button>
+                </div>
+            </section>
+        </article>
+        }
+    }
+    </section>
+    <section>
+    @for (goal of goals(); track goal.key) {
+        @if (goal.team == 'right') {
+        <article>
+            <section class="details">
+                <b>{{ game().rightTeamName }}</b>
+                <input [(ngModel)]="goal.playerNumber">
+                <input [(ngModel)]="goal.playerName">
+                <div class="actions">
+                    <button (click)="onEditGoal(goal)">Actualizează</button>
+                    <button (click)="onDeleteGoal(goal)">Șterge</button>
+                </div>
+            </section>
+            <shirt size="8" [color]="{
+                hands: game().rightTeamColor.hands,
+                shirt: game().rightTeamColor.shirt
+            }" />
+        </article>
+        }
+    }
+    </section>
+</div>

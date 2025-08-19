@@ -1,0 +1,153 @@
+:host {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    margin-top: 3rem;
+    gap: 5rem;
+}
+
+.championship-title {
+    border: 0;
+    border: 2px solid #808080;
+    border-radius: .5rem;
+    background-color: hsla(0, 0%, 100%, 0.5);
+    font-size: 2rem;
+    width: 60rem;
+    text-align: center;
+    padding-block: .85rem;
+}
+
+.colors {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    input {
+        border: none;
+        background-color: transparent;
+        font-size: 1.2rem;
+        width: 8rem;
+        height: 3rem;
+        padding-block: .5rem;
+        padding-right: 0.2rem;
+        text-align: center;
+        box-sizing: content-box;
+    }
+
+}
+
+.team-name-input {
+    border: 0;
+    border-bottom: 2px solid #000;
+    background-color: transparent;
+    font-size: 1.4rem;
+    width: 16rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    padding-bottom: .5rem;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper {
+    display: inline-block;
+    position: relative;
+  }
+
+.vs {
+    font-size: 4rem;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10rem;
+}
+
+.score-input {
+    border: 0;
+    border-bottom: 2px solid #000;
+    background-color: transparent;
+    font-size: 6rem;
+    width: 6rem;
+    padding-left: .7rem;
+    padding-right: 0;
+    text-align: center;
+    box-sizing: content-box;
+}
+
+.play-button, .pause-button {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+        font-size: 1.6rem;
+        margin-top: 0px;
+    }
+}
+
+.time {
+    display: flex;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.play-button {
+    border: 1px solid #000;
+}
+
+.pause-button {
+    background-color: #ffc9c9;
+    border: 1px solid #ff0000;
+    color: #ff0000;
+}
+
+.time-input {
+    display: flex;
+    font-size: 1.2rem;
+    width: 6rem;
+    text-align: center;
+    border-radius: .5rem;
+    background-color: transparent;
+    border: 1px solid #000;
+}
+
+.submit-button {
+    background-color: #353535;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 2rem;
+    &:hover {
+        background-color: #000;
+    }
+}

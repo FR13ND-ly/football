@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { getDatabase, ref, onValue, set } from "firebase/database";
-import { AppComponent } from './app.component';
+import { AppComponent } from '../../app.component';
 import { FormBuilder, RequiredValidator } from '@angular/forms';
 
 @Injectable({
@@ -51,6 +51,7 @@ export class DbService {
   constructor() {
     onValue(this.gameRef, (snapshot) => {
       this.gameForm.patchValue(snapshot.val());
+      this.game.set(snapshot.val())
     });
   }
 

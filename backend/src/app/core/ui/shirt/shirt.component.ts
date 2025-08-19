@@ -8,6 +8,8 @@ import { Component, input } from '@angular/core';
   styleUrl: './shirt.component.scss'
 })
 export class ShirtComponent {
+  size = input()
+
   color = input({
     hands: '#000',
     shirt: '#fff'

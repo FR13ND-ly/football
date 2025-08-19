@@ -1,57 +1,10 @@
 <img class="bg" src="bg.png">
-<header>
-    <h2>Est-Curier Football Workspace</h2>
-</header>
-<form [formGroup]="gameForm" (ngSubmit)="onUpdateGame()">
-  <input class="championship-title" formControlName="championshipTitle" required>
-  <div class="content">
-    <div class="team">
-      <input class="team-name-input" formControlName="leftTeamName" required>
-      <shirt [color]="{
-      hands: gameForm.get('leftTeamColor.hands')?.value || '',
-      shirt: gameForm.get('leftTeamColor.shirt')?.value || ''
-    }" />
-      <div class="colors" formGroupName="leftTeamColor">
-        <input id="leftTeamColor" formControlName="hands" required>
-        <input id="leftTeamColor" formControlName="shirt" required>
-      </div>
-    </div>
-
-    <div class="middle">
-      <section class="score">
-        <div class="input-wrapper">
-          <input class="score-input" formControlName="scoreLeft" type="number" required>
+<div class="content">
+    <app-header />
+    <main>
+        <app-menu />
+        <div class="wrapper">
+            <router-outlet />
         </div>
-        <span class="vs">-</span>
-        <div class="input-wrapper">
-          <input class="score-input" formControlName="scoreRight" type="number" required>
-        </div>
-      </section>
-      <section class="time">
-        <div>
-          @if (gameForm.get('timeRunning')?.value) {
-            <button class="pause-button" (click)="checkbox.click()"><span class="material-symbols-outlined">pause</span></button>
-          } @else {
-            <button class="play-button" (click)="checkbox.click()"><span class="material-symbols-outlined">play_arrow</span></button>
-          }
-          <input type="checkbox" formControlName="timeRunning" style="display: none;" #checkbox>
-        </div>
-        <input class="time-input" formControlName="time" required>
-      </section>
-    </div>
-
-    <div class="team">
-      <input class="team-name-input" formControlName="rightTeamName" required>
-      <shirt [color]="{
-        hands: gameForm.get('rightTeamColor.hands')?.value || '',
-        shirt: gameForm.get('rightTeamColor.shirt')?.value || ''
-      }" />
-      <div class="colors" formGroupName="rightTeamColor">
-          <input id="rightTeamColor" formControlName="hands" required>
-          <input id="rightTeamColor" formControlName="shirt" required>
-      </div>
-    </div>
-  </div>
-
-  <button class="submit-button" type="submit" [disabled]="gameForm.invalid">Actualizează</button>
-</form>
+    </main>
+</div>

@@ -1,27 +1,14 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { DbService } from './db.service';
-import { ShirtComponent } from './shirt/shirt.component';
+import { MenuComponent } from './core/ui/menu/menu.component';
+import { HeaderComponent } from './core/ui/header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ShirtComponent, ReactiveFormsModule],
+  imports: [RouterOutlet, MenuComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
-  dbService = inject(DbService)
-
-  gameForm = this.dbService.gameForm;
-
-  ngOnInit(): void {
-    console.log(this.dbService.game());
-  }
-
-  onUpdateGame() {
-    const gameData = this.gameForm.value;
-    this.dbService.updateGame(gameData);
-  }
+export class AppComponent {
 }
