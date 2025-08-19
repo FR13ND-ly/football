@@ -1,1 +1,72 @@
-<p>cards works!</p>
+<div>
+    <div class="score">
+        <button (click)="onAddCard('left')">
+            <span class="material-symbols-outlined">add</span>
+        </button>
+        {{ game().leftTeamName }} <h1>{{ leftTeamCards().length }} cartonașe | {{ rightTeamCards().length }} cartonașe</h1> {{ game().rightTeamName }}
+        <button (click)="onAddCard('right')">
+            <span class="material-symbols-outlined">add</span>
+        </button>
+    </div>
+</div>
+<div class="cards">
+    <section class="team">
+    @for (card of leftTeamCards(); track card.key) {
+        <article>
+            <shirt size="8" [color]="{
+                hands: game().leftTeamColor.hands,
+                shirt: game().leftTeamColor.shirt
+            }" />
+            <section class="details">
+                <h2>{{ game().leftTeamName }}</h2>
+                <input placeholder="Număr" [(ngModel)]="card.playerNumber">
+                <input placeholder="Nume" [(ngModel)]="card.playerName">
+                <select [(ngModel)]="card.type">
+                    <option value="yellow">Cartonaș Galben</option>
+                    <option value="red">Cartonaș Roșu</option>
+                </select>
+                <input placeholder="Timp" [(ngModel)]="card.time">
+                <div class="actions">
+                    <button (click)="onEditCard(card)">Actualizează</button>
+                    <button (click)="onDeleteCard(card)">Șterge</button>
+                </div>
+            </section>
+            <div class="card" [ngClass]="{
+                'yellow': card.type === 'yellow',
+                'red': card.type === 'red'
+            }">
+            </div>
+        </article>
+    }
+    </section>
+    <section class="team">
+    @for (card of rightTeamCards(); track card.key) {
+        <article>
+            <div class="card" [ngClass]="{
+                'yellow': card.type === 'yellow',
+                'red': card.type === 'red'
+            }">
+            </div>
+            <section class="details">
+                <h2>{{ game().rightTeamName }}</h2>
+                <input [(ngModel)]="card.playerNumber">
+                <input [(ngModel)]="card.playerName">
+                <select [(ngModel)]="card.type">
+                    <option value="yellow">Cartonaș Galben</option>
+                    <option value="red">Cartonaș Roșu</option>
+                </select>
+                <input placeholder="Timp" [(ngModel)]="card.time">
+                <div class="actions">
+                    <button (click)="onEditCard(card)">Actualizează</button>
+                    <button (click)="onDeleteCard(card)">Șterge</button>
+                </div>
+            </section>
+            <shirt size="8" [color]="{
+                hands: game().rightTeamColor.hands,
+                shirt: game().rightTeamColor.shirt
+            }" />
+            
+        </article>
+    }
+    </section>
+</div>

@@ -1,1 +1,5 @@
-<p>add-goal-dialog works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input formControlName="playerName" placeholder="Player Name">
+    <input formControlName="playerNumber" placeholder="Player Number">
+    <button type="submit">Adaugă gol</button>
+</form>

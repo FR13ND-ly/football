@@ -1,1 +1,58 @@
-<p>substitutions works!</p>
+<div>
+    <div class="score">
+        <button (click)="onAddSubstitution('left')">
+            <span class="material-symbols-outlined">add</span>
+        </button>
+        {{ game().leftTeamName }} <h1>{{ leftTeamSubstitutions().length }} substituții | {{ rightTeamSubstitutions().length }} substituții</h1> {{ game().rightTeamName }}
+        <button (click)="onAddSubstitution('right')">
+            <span class="material-symbols-outlined">add</span>
+        </button>
+    </div>
+</div>
+<div class="substitutions">
+    <section class="team">
+    @for (substitution of leftTeamSubstitutions(); track substitution.key) {
+        <article>
+            <section class="details">
+                <h2>{{ game().leftTeamName }}</h2>
+                <div class="player-form">
+                    <input placeholder="Număr" [(ngModel)]="substitution.playerToComeNumber">
+                    <input placeholder="Nume" [(ngModel)]="substitution.playerToComeName">
+                </div>
+                <div class="player-form">
+                    <input placeholder="Număr" [(ngModel)]="substitution.playerToGoNumber">
+                    <input placeholder="Nume" [(ngModel)]="substitution.playerToGoName">
+                </div>
+                <input placeholder="Timp" [(ngModel)]="substitution.time">
+                <div class="actions">
+                    <button (click)="onEditSubstitution(substitution)">Actualizează</button>
+                    <button (click)="onDeleteSubstitution(substitution)">Șterge</button>
+                </div>
+            </section>
+        </article>
+    }
+    </section>
+    <section class="team">
+    @for (substitution of rightTeamSubstitutions(); track substitution.key) {
+        <article>
+            <section class="details">
+                <h2>{{ game().rightTeamName }}</h2>
+                <div class="player-form">
+                    <input placeholder="Număr" [(ngModel)]="substitution.playerToComeNumber">
+                    <input placeholder="Nume" [(ngModel)]="substitution.playerToComeName">
+                </div>
+                <div class="player-form">
+                    <input placeholder="Număr" [(ngModel)]="substitution.playerToGoNumber">
+                    <input placeholder="Nume" [(ngModel)]="substitution.playerToGoName">
+                </div>
+                <input placeholder="Timp" [(ngModel)]="substitution.time">
+                <div class="actions">
+                    <button (click)="onEditSubstitution(substitution)">Actualizează</button>
+                    <button (click)="onDeleteSubstitution(substitution)">Șterge</button>
+                </div>
+            </section>
+            
+        </article>
+    }
+    </section>
+</div>

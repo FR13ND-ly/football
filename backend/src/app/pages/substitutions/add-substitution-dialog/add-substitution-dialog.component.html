@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <b>Jucător care intră:</b>
+    <div class="player">
+        <input formControlName="playerToComeNumber" placeholder="Număr">
+        <input formControlName="playerToComeName" placeholder="Nume">
+    </div>
+    <b>Jucător care iese:</b>
+    <div class="player">
+        <input formControlName="playerToGoName" placeholder="Nume">
+        <input formControlName="playerToGoNumber" placeholder="Număr">
+    </div>
+    <button type="submit">Adaugă gol</button>
+</form>

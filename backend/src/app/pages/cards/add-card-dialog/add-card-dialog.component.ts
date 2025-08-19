@@ -1,18 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import {
-  MAT_DIALOG_DATA,
-  MatDialogRef
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-add-goal-dialog',
+  selector: 'app-add-card-dialog',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './add-goal-dialog.component.html',
-  styleUrl: './add-goal-dialog.component.scss'
+  templateUrl: './add-card-dialog.component.html',
+  styleUrl: './add-card-dialog.component.scss'
 })
-export class AddGoalDialogComponent {
+export class AddCardDialogComponent {
   team = inject(MAT_DIALOG_DATA);
   dialogRef = inject(MatDialogRef);
   fb = new FormBuilder();
@@ -20,6 +17,7 @@ export class AddGoalDialogComponent {
   form = this.fb.group({
     playerName: [''],
     playerNumber: ['', Validators.required],
+    type: ['yellow', Validators.required],
   });
 
   onSubmit() {

@@ -23,7 +23,6 @@ export class GoalsService {
           return el;
         })
       );
-      console.log(this.goals())
     });
   }
 
