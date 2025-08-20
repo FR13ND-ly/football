@@ -6,6 +6,7 @@ import { DbService } from '../../core/services/db.service';
 import { ShirtComponent } from '../../core/ui/shirt/shirt.component';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { CdkAriaLive } from "../../../../node_modules/@angular/cdk/a11y/index";
 
 @Component({
   selector: 'app-cards',
@@ -32,7 +33,7 @@ export class CardsComponent {
       let data = {
         playerName: result?.playerName,
         playerNumber: result?.playerNumber,
-        type: result?.type,
+        cardType: result?.cardType,
         team
       };  
       if (result) {

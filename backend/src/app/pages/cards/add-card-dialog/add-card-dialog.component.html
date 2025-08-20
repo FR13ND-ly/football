@@ -1,7 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input formControlName="playerName" placeholder="Player Name">
-    <input formControlName="playerNumber" placeholder="Player Number">
-    <select formControlName="type">
+    <h1>Adaugă cartonaș</h1>
+    <div class="player">
+        <input formControlName="playerNumber" placeholder="Număr">
+        <input formControlName="playerName" placeholder="Nume">
+    </div>
+    <select formControlName="cardType">
         <option value="yellow">Cartonaș Galben</option>
         <option value="red">Cartonaș Roșu</option>
     </select>

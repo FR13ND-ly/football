@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { DbService } from '../../core/services/db.service';
 import { GoalsService } from '../../core/services/goals.service';
 import { FormBuilder, FormsModule } from '@angular/forms';
@@ -21,7 +21,10 @@ export class GoalsComponent {
   dialog = inject(MatDialog);
 
   game = this.db.game
-  goals = this.goalsService.goals
+  goals: any = this.goalsService.goals
+
+  goalsLeft = computed(() => this.goals().filter((goal: any) => goal.team === 'left'));
+  goalsRight = computed(() => this.goals().filter((goal: any) => goal.team === 'right'));
 
 
   onAddGoal(team: string) {

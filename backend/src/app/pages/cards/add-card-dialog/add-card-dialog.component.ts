@@ -17,7 +17,7 @@ export class AddCardDialogComponent {
   form = this.fb.group({
     playerName: [''],
     playerNumber: ['', Validators.required],
-    type: ['yellow', Validators.required],
+    cardType: ['yellow', Validators.required],
   });
 
   onSubmit() {

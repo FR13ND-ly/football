@@ -1,0 +1,44 @@
+:host {
+    display: flex;
+    gap: 1rem;
+    padding-right: 7rem;
+    padding-bottom: .8rem;
+    align-items: center;
+    position: relative;
+}
+
+img {
+    width: 10rem;
+    height: fit-content;
+}
+
+h1 {
+    font-family: "Bebas Neue", sans-serif;
+    color: rgb(22, 114, 99);
+    font-size: 6rem;
+    margin: 0;
+    margin-bottom: -.5rem;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-time {
+    font-size: 2rem;
+    margin-top: -1.6rem;
+    font-family: "Bebas Neue", sans-serif;
+    
+    position: absolute;
+    top: 1.2rem;
+    right: 0rem;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 4rem;
+    font-family: "Bebas Neue", sans-serif;
+}

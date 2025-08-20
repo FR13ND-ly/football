@@ -10,8 +10,7 @@
 
 <div class="goals">
     <section class="team">
-    @for (goal of goals(); track goal.key) {
-        @if (goal.team == 'left') {
+    @for (goal of goalsLeft(); track goal.key) {
         <article>
             <shirt size="8" [color]="{
                 hands: game().leftTeamColor.hands,
@@ -19,27 +18,29 @@
             }" />
             <section class="details">
                 <h2>{{ game().leftTeamName }}</h2>
-                <input placeholder="Număr" [(ngModel)]="goal.playerNumber">
-                <input placeholder="Nume" [(ngModel)]="goal.playerName">
-                <input placeholder="Timp" [(ngModel)]="goal.time">
+                <div class="player">
+                    <input placeholder="Număr" [(ngModel)]="goal.playerNumber" placeholder="Număr">
+                    <input placeholder="Nume" [(ngModel)]="goal.playerName" placeholder="Nume">
+                </div>
+                <input placeholder="Timp" [(ngModel)]="goal.time" placeholder="Timp">
                 <div class="actions">
                     <button (click)="onEditGoal(goal)">Actualizează</button>
                     <button (click)="onDeleteGoal(goal)">Șterge</button>
                 </div>
             </section>
         </article>
-        }
     }
     </section>
     <section class="team">
-    @for (goal of goals(); track goal.key) {
-        @if (goal.team == 'right') {
+    @for (goal of goalsRight(); track goal.key) {
         <article>
             <section class="details">
                 <h2>{{ game().rightTeamName }}</h2>
-                <input placeholder="Număr" [(ngModel)]="goal.playerNumber">
-                <input placeholder="Nume" [(ngModel)]="goal.playerName">
-                <input placeholder="Timp" [(ngModel)]="goal.time">
+                <div class="player">
+                    <input placeholder="Număr" [(ngModel)]="goal.playerNumber" placeholder="Număr">
+                    <input placeholder="Nume" [(ngModel)]="goal.playerName" placeholder="Nume">
+                </div>
+                <input placeholder="Timp" [(ngModel)]="goal.time" placeholder="Timp">
                 <div class="actions">
                     <button (click)="onEditGoal(goal)">Actualizează</button>
                     <button (click)="onDeleteGoal(goal)">Șterge</button>
@@ -50,7 +51,6 @@
                 shirt: game().rightTeamColor.shirt
             }" />
         </article>
-        }
     }
     </section>
 </div>

@@ -1,4 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1>Adaugă substituție</h1>
     <b>Jucător care intră:</b>
     <div class="player">
         <input formControlName="playerToComeNumber" placeholder="Număr">
@@ -6,8 +7,8 @@
     </div>
     <b>Jucător care iese:</b>
     <div class="player">
-        <input formControlName="playerToGoName" placeholder="Nume">
         <input formControlName="playerToGoNumber" placeholder="Număr">
+        <input formControlName="playerToGoName" placeholder="Nume">
     </div>
     <button type="submit">Adaugă gol</button>
 </form>

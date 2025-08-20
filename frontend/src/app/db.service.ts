@@ -26,6 +26,7 @@ export class DbService {
   "rightTeamName": "„Lupii” Cimișeni",
   "scoreLeft": 0,
   "scoreRight": 0,
+  "extraTime": 0,
   "time": "00:00",
   "timeRunning": false,
 }
@@ -74,7 +75,7 @@ export class DbService {
         if (!data[key].published) {
           data[key].key = key;
           data[key].type = 'card';
-          this.bufferService.add(data[key]);
+          this.bufferService.addItem(data[key]);
         }
       });
     });
@@ -86,7 +87,7 @@ export class DbService {
         if (!data[key].published) {
           data[key].key = key;
           data[key].type = 'goal';
-          this.bufferService.add(data[key]);
+          this.bufferService.addItem(data[key]);
         }
       });
     });
@@ -98,7 +99,7 @@ export class DbService {
         if (!data[key].published) {
           data[key].key = key;
           data[key].type = 'substitution';
-          this.bufferService.add(data[key]);
+          this.bufferService.addItem(data[key]);
         }
       });
     });

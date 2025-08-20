@@ -1,5 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input formControlName="playerName" placeholder="Player Name">
-    <input formControlName="playerNumber" placeholder="Player Number">
+    <h1>Adaugă gol</h1>
+    <div class="player">
+        <input formControlName="playerNumber" placeholder="Număr">
+        <input formControlName="playerName" placeholder="Nume">
+    </div>
     <button type="submit">Adaugă gol</button>
 </form>

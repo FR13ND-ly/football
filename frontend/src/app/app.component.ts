@@ -12,11 +12,14 @@ import { DbService } from './db.service';
 import { BufferService } from './buffer.service';
 import { concatMap, delay, of } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { CardEventComponent } from './card-event/card-event.component';
+import { GoalEventComponent } from './goal-event/goal-event.component';
+import { SubstitutionEventComponent } from './substitution-event/substitution-event.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ShirtComponent, AsyncPipe],
+  imports: [ShirtComponent, CardEventComponent, GoalEventComponent, SubstitutionEventComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -43,7 +46,7 @@ export class AppComponent {
   private intervalId: any = null;
   currentItem: any;
 
-  event = signal({})
+  event: any = signal({})
 
   constructor() {
     effect(() => {
@@ -89,9 +92,7 @@ export class AppComponent {
       }
     }, {allowSignalWrites: true});
 
-    this.bufferService.lastItem$.pipe(concatMap((value, index) => 
-      of(value).pipe(delay((index - 1) * 10000)) 
-    )).subscribe(item => {
+    this.bufferService.processed$.subscribe((item) => {
       this.event.set(item);
       if (!item) return;
       item.time = this.liveGameTime()

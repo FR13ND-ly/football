@@ -1,1 +1,13 @@
-<p>goal-event works!</p>
+<img src="/goal.png" />
+<div class="info">
+    <span class="goal-time">{{ goal().time }}</span>
+    <h1>Goal!</h1>
+    <div class="goal-details">
+        <div class="player">
+            @if (goal().team == 'left') { <shirt [size]="3.5" [color]="game().leftTeamColor" /> }
+            @else { <shirt [size]="3.5" [color]="game().rightTeamColor" /> }
+            <span class="player-number">{{ goal().playerNumber }}</span>
+            <span class="player-name">{{ goal().playerName }}</span>
+        </div>
+    </div>
+</div>

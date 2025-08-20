@@ -25,6 +25,7 @@ export class DbService {
     "rightTeamName": "„Lupii” Cimișeni",
     "scoreLeft": 0,
     "scoreRight": 0,
+    "extraTime": 0,
     "time": "00:00",
     "timeRunning": false,
   });
@@ -41,6 +42,7 @@ export class DbService {
       hands: [''],
       shirt: ['']
     }),
+    extraTime: [0],
     scoreLeft: [0],
     scoreRight: [0],
     time: ['00:00'],

@@ -27,6 +27,7 @@ export class CardsService {
   }
 
   addCard(card: any) {
+    console.log(card)
     const newCardRef = push(this.cardsRef);
     return set(newCardRef, card);
   }

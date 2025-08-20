@@ -1,29 +1,37 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, concatMap, interval, merge, of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BufferService {
-  private buffer: any[] = [];
-  private bufferSubject = new BehaviorSubject<any[]>([]);
-  private lastItemSubject = new BehaviorSubject<any | null>(null);
+  private input$ = new Subject<any>();
+  private output$ = new BehaviorSubject<any>(null);
 
-  buffer$ = this.bufferSubject.asObservable();
-  lastItem$ = this.lastItemSubject.asObservable();
+  public readonly processed$ = this.output$.asObservable();
 
-  add(item: any): void {
-    this.buffer.push(item);
-    this.bufferSubject.next([...this.buffer]);
-
-    this.lastItemSubject.next(item);
-    this.lastItemSubject.next(null);
+  constructor() {
+    this.startProcessing();
   }
 
-  take(): any {
-    const item = this.buffer.shift();
-    this.bufferSubject.next([...this.buffer]);
-    return item;
+  addItem(item: any) {
+    this.input$.next(item);
+  }
+
+  private startProcessing() {
+    this.input$
+      .pipe(
+        concatMap((item) =>
+          new Promise<void>((resolve) => {
+            this.output$.next(item); 
+            setTimeout(() => {
+              this.output$.next(null);
+              resolve();
+            }, 10000);
+          })
+        )
+      )
+      .subscribe();
   }
 
 }

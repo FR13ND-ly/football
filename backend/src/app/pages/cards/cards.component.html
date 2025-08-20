@@ -1,13 +1,11 @@
-<div>
-    <div class="score">
-        <button (click)="onAddCard('left')">
-            <span class="material-symbols-outlined">add</span>
-        </button>
-        {{ game().leftTeamName }} <h1>{{ leftTeamCards().length }} cartonașe | {{ rightTeamCards().length }} cartonașe</h1> {{ game().rightTeamName }}
-        <button (click)="onAddCard('right')">
-            <span class="material-symbols-outlined">add</span>
-        </button>
-    </div>
+<div class="score">
+    <button (click)="onAddCard('left')">
+        <span class="material-symbols-outlined">add</span>
+    </button>
+    {{ game().leftTeamName }} <h1>{{ leftTeamCards().length }} cartonașe | {{ rightTeamCards().length }} cartonașe</h1> {{ game().rightTeamName }}
+    <button (click)="onAddCard('right')">
+        <span class="material-symbols-outlined">add</span>
+    </button>
 </div>
 <div class="cards">
     <section class="team">
@@ -19,9 +17,11 @@
             }" />
             <section class="details">
                 <h2>{{ game().leftTeamName }}</h2>
-                <input placeholder="Număr" [(ngModel)]="card.playerNumber">
-                <input placeholder="Nume" [(ngModel)]="card.playerName">
-                <select [(ngModel)]="card.type">
+                <div class="player">
+                    <input [(ngModel)]="card.playerNumber" placeholder="Număr">
+                    <input [(ngModel)]="card.playerName" placeholder="Nume">
+                </div>
+                <select [(ngModel)]="card.cardType">
                     <option value="yellow">Cartonaș Galben</option>
                     <option value="red">Cartonaș Roșu</option>
                 </select>
@@ -32,8 +32,8 @@
                 </div>
             </section>
             <div class="card" [ngClass]="{
-                'yellow': card.type === 'yellow',
-                'red': card.type === 'red'
+                'yellow': card.cardType === 'yellow',
+                'red': card.cardType === 'red'
             }">
             </div>
         </article>
@@ -43,15 +43,17 @@
     @for (card of rightTeamCards(); track card.key) {
         <article>
             <div class="card" [ngClass]="{
-                'yellow': card.type === 'yellow',
-                'red': card.type === 'red'
+                'yellow': card.cardType === 'yellow',
+                'red': card.cardType === 'red'
             }">
             </div>
             <section class="details">
                 <h2>{{ game().rightTeamName }}</h2>
-                <input [(ngModel)]="card.playerNumber">
-                <input [(ngModel)]="card.playerName">
-                <select [(ngModel)]="card.type">
+                <div class="player">
+                    <input [(ngModel)]="card.playerNumber" placeholder="Număr">
+                    <input [(ngModel)]="card.playerName" placeholder="Nume">
+                </div>
+                <select [(ngModel)]="card.cardType">
                     <option value="yellow">Cartonaș Galben</option>
                     <option value="red">Cartonaș Roșu</option>
                 </select>

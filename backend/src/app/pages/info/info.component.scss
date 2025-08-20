@@ -55,6 +55,7 @@ form {
     margin-bottom: 2rem;
     text-align: center;
     padding-bottom: .5rem;
+    outline: none;
 }
 
 .team {
@@ -128,7 +129,7 @@ form {
     color: #ff0000;
 }
 
-.time-input {
+.time-input, .extra-time-input {
     display: flex;
     font-size: 1.2rem;
     width: 6rem;
@@ -136,6 +137,10 @@ form {
     border-radius: .5rem;
     background-color: transparent;
     border: 1px solid #000;
+}
+
+.extra-time-input {
+    width: 2rem;
 }
 
 .submit-button {

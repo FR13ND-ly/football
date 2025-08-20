@@ -2,7 +2,6 @@
   <div class="football">
     <div class="information">
       <div class="top">
-        <div id="timer">{{ liveGameTime() }}</div>
         <span class="championship-title">{{ game().championshipTitle }}</span>
       </div>
       <div class="teams-info">
@@ -10,6 +9,7 @@
           <div class="color"><shirt [color]="game().leftTeamColor" /></div>
           <span class="team-name">{{ game().leftTeamName }}</span>
         </section>
+        <div class="center">
         <section class="score">
           <div class="score-container">
             <div class="flip" [class.animate]="leftAnimating()">
@@ -17,7 +17,7 @@
               <div class="number new">{{ scoreLeft() }}</div>
             </div>
           </div>
-          <span style="display: block; transform: translateY(-.1rem); margin-inline: .2rem;">-</span>
+          <span style="display: block; transform: translateY(-.15rem); margin-inline: .2rem;">-</span>
           <div class="score-container">
             <div class="flip" [class.animate]="rightAnimating()">
               <div class="number old">{{ prevScoreRight() }}</div>
@@ -25,6 +25,12 @@
             </div>
           </div>
         </section>
+        
+        <div id="timer">{{ liveGameTime() }}</div>
+        @if (game().extraTime >= 0) {
+          <div class="extra-time">+{{ game().extraTime }}</div>
+        }
+        </div>
         <section class="team-right">
           <span class="team-name">{{ game().rightTeamName }}</span>
           <div class="color"><shirt [color]="game().rightTeamColor" /></div>
@@ -37,8 +43,14 @@
 
 @if (event()) {
   <div class="event">
-    <div class="event-container">
-      <p>{{event()}}</p>
-    </div>
+    @if (event().type == 'card') {
+      <card-event [card]="event()" [game]="game()" />
+    }
+    @else if (event().type == 'goal') {
+      <goal-event [goal]="event()" [game]="game()" />
+    }
+    @else if (event().type == 'substitution') {
+      <substitution-event [substitution]="event()" [game]="game()" />
+    }
   </div>
 }
