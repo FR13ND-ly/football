@@ -9,16 +9,22 @@ import {
 } from '@angular/core';
 import { ShirtComponent } from './shirt/shirt.component';
 import { DbService } from './db.service';
+import { BufferService } from './buffer.service';
+import { concatMap, delay, of } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ShirtComponent],
+  imports: [ShirtComponent, AsyncPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   dbService = inject(DbService);
+  bufferService = inject(BufferService);
+
+  
   game = this.dbService.game;
   time = this.dbService.time;
 
@@ -35,6 +41,9 @@ export class AppComponent {
   rightAnimating = signal(false);
 
   private intervalId: any = null;
+  currentItem: any;
+
+  event = signal({})
 
   constructor() {
     effect(() => {
@@ -43,24 +52,24 @@ export class AppComponent {
     }, {allowSignalWrites: true});
 
     effect(() => {
-    const newScore = this.game().scoreLeft;
-    if (newScore !== this.scoreLeft()) {
-      this.prevScoreLeft.set(this.scoreLeft());
-      this.scoreLeft.set(newScore);
-      this.leftAnimating.set(true);
-      setTimeout(() => this.leftAnimating.set(false), 500);
-    }
-  }, {allowSignalWrites: true});
+      const newScore = this.game().scoreLeft;
+      if (newScore !== this.scoreLeft()) {
+        this.prevScoreLeft.set(this.scoreLeft());
+        this.scoreLeft.set(newScore);
+        this.leftAnimating.set(true);
+        setTimeout(() => this.leftAnimating.set(false), 500);
+      }
+    }, {allowSignalWrites: true});
 
-  effect(() => {
-    const newScore = this.game().scoreRight;
-    if (newScore !== this.scoreRight()) {
-      this.prevScoreRight.set(this.scoreRight());
-      this.scoreRight.set(newScore);
-      this.rightAnimating.set(true);
-      setTimeout(() => this.rightAnimating.set(false), 500);
-    }
-  }, {allowSignalWrites: true});
+    effect(() => {
+      const newScore = this.game().scoreRight;
+      if (newScore !== this.scoreRight()) {
+        this.prevScoreRight.set(this.scoreRight());
+        this.scoreRight.set(newScore);
+        this.rightAnimating.set(true);
+        setTimeout(() => this.rightAnimating.set(false), 500);
+      }
+    }, {allowSignalWrites: true});
 
     effect(() => {
       const { timeRunning } = this.game();
@@ -79,6 +88,23 @@ export class AppComponent {
         }, 1000);
       }
     }, {allowSignalWrites: true});
+
+    this.bufferService.lastItem$.pipe(concatMap((value, index) => 
+      of(value).pipe(delay((index - 1) * 10000)) 
+    )).subscribe(item => {
+      this.event.set(item);
+      if (!item) return;
+      item.time = this.liveGameTime()
+      if (item.type == 'goal') {
+        this.dbService.setGoalPublished(item);
+      }
+      else if (item.type == 'card') {
+        this.dbService.setCardPublished(item);
+      }
+      else if (item.type == 'substitution') {
+        this.dbService.setSubstitutionPublished(item);
+      }
+    });
   }
 
   parseTimeToSeconds(timeStr: string): number {
