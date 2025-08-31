@@ -37,8 +37,8 @@ export const teams = [
             },
             {
                 id: 7,
-                name: "Cristi Vistierul 11",
-                matchNumber: 14
+                name: "Cristi Vistierul",
+                matchNumber: 11
             },
             {
                 id: 8,
@@ -49,6 +49,31 @@ export const teams = [
                 id: 9,
                 name: "Sandu Ciorba",
                 matchNumber: 8
+            },
+            {
+                id: 10,
+                name: "Sclifos Ion",
+                matchNumber: 2
+            },
+            {
+                id: 11,
+                name: "Filimanciuc Eduard",
+                matchNumber: 22
+            },
+            {
+                id: 12,
+                name: "Ciprian I.",
+                matchNumber: 18 
+            },
+            {
+                id: 13,
+                name: "Melnic D.",
+                matchNumber: 15
+            },
+            {
+                id: 14,
+                name: "Paladii M.",
+                matchNumber: 23
             }
         ]
     },
