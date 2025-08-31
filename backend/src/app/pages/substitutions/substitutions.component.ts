@@ -26,14 +26,16 @@ export class SubstitutionsComponent {
 
 
   onAddSubstitution(team: string) {
-    const dialogRef = this.dialog.open(AddSubstitutionDialogComponent);
+    let teamName = team == 'left' ? this.game().leftTeamName : this.game().rightTeamName;
+    const dialogRef = this.dialog.open(AddSubstitutionDialogComponent, { data: teamName });
     dialogRef.afterClosed().subscribe((result) => {
       let data = {
         playerToComeName: result?.playerToComeName,
         playerToComeNumber: result?.playerToComeNumber,
         playerToGoName: result?.playerToGoName,
         playerToGoNumber: result?.playerToGoNumber,
-        team
+        team,
+        teamName
       };  
       if (result) {
         this.substitutionsService.addSubstitution(data);

@@ -1,13 +1,18 @@
-<img src="/goal.png" />
+@if (goal().playerName != '') {
+    <img src="/teams/{{ goal().teamName | fileName }}/{{ goal().playerName | fileName }}.png" />
+} @else {
+    @if (goal().team == 'left') { <shirt [size]="8" [color]="game().leftTeamColor" /> }
+    @else { <shirt [size]="8" [color]="game().rightTeamColor" /> }
+}
 <div class="info">
     <span class="goal-time">{{ goal().time }}</span>
     <h1>Goal!</h1>
     <div class="goal-details">
         <div class="player">
-            @if (goal().team == 'left') { <shirt [size]="3.5" [color]="game().leftTeamColor" /> }
-            @else { <shirt [size]="3.5" [color]="game().rightTeamColor" /> }
             <span class="player-number">{{ goal().playerNumber }}</span>
-            <span class="player-name">{{ goal().playerName }}</span>
+            @if (goal().playerName != '') {
+                <span class="player-name">, {{ goal().playerName }}</span>
+            }
         </div>
     </div>
 </div>

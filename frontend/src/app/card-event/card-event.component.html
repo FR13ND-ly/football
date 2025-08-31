@@ -1,16 +1,22 @@
 @if (card().cardType == 'yellow') {
-<img src="/yellow-card.png" />
+<img class="illustration" src="/yellow-card.png" />
 } @else {
-<img src="/red-card.png" />
+<img class="illustration" src="/red-card.png" />
 }
 <div class="info">
     <span class="card-time">{{ card().time }}</span>
     <div class="card-details">
         <div class="player">
-            @if (card().team == 'left') { <shirt [size]="5" [color]="game().leftTeamColor" /> }
-            @else { <shirt [size]="5" [color]="game().rightTeamColor" /> }
+            @if (card().playerName != '') {
+                <img class="player-image" src="/teams/{{ card().teamName | fileName }}/{{ card().playerName | fileName }}.png" />
+            } @else {
+                @if (card().team == 'left') { <shirt [size]="5" [color]="game().leftTeamColor" /> }
+                @else { <shirt [size]="5" [color]="game().rightTeamColor" /> }
+            }
             <span class="player-number">{{ card().playerNumber }}</span>
-            <span class="player-name">{{ card().playerName }}</span>
+            @if (card().playerName != '') {
+                <span class="player-name">, {{ card().playerName }}</span>
+            }
         </div>
     </div>
 </div>

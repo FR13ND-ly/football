@@ -2,13 +2,13 @@
     <h1>Adaugă substituție</h1>
     <b>Jucător care intră:</b>
     <div class="player">
-        <input formControlName="playerToComeNumber" placeholder="Număr">
+        <input formControlName="playerToComeNumber" placeholder="Număr" (ngModelChange)="onChangeValue(playerToComeNumberInput.value, 'come')" #playerToComeNumberInput>
         <input formControlName="playerToComeName" placeholder="Nume">
     </div>
     <b>Jucător care iese:</b>
     <div class="player">
-        <input formControlName="playerToGoNumber" placeholder="Număr">
+        <input formControlName="playerToGoNumber" placeholder="Număr" (ngModelChange)="onChangeValue(playerToGoNumberInput.value, 'go')" #playerToGoNumberInput>
         <input formControlName="playerToGoName" placeholder="Nume">
     </div>
-    <button type="submit">Adaugă gol</button>
+    <button type="submit">Adaugă substituție</button>
 </form>

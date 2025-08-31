@@ -1,16 +1,24 @@
-<img src="/substitution.webp" />
+<img class="illustration" src="/substitution.webp" />
 <div class="info">
     <span class="card-time">{{ substitution().time }}</span>
     <div class="card-details">
         <div class="player to-come">
-            @if (substitution().team == 'left') { <shirt [size]="4" [color]="game().leftTeamColor" /> }
-            @else { <shirt [size]="3.5" [color]="game().rightTeamColor" /> }
+            @if (substitution().playerName != '') {
+                <img class="player-image" src="/teams/{{ substitution().teamName | fileName }}/{{ substitution().playerToComeName | fileName }}.png" />
+            } @else {
+                @if (substitution().team == 'left') { <shirt [size]="4" [color]="game().leftTeamColor" /> }
+                @else { <shirt [size]="4" [color]="game().rightTeamColor" /> }
+            }
             <span class="player-number">{{ substitution().playerToComeNumber }}</span>
             <span class="player-name">{{ substitution().playerToComeName }}</span>
         </div>
         <div class="player to-go">
-            @if (substitution().team == 'left') { <shirt [size]="4" [color]="game().leftTeamColor" /> }
-            @else { <shirt [size]="4" [color]="game().rightTeamColor" /> }
+            @if (substitution().playerName != '') {
+                <img class="player-image" src="/teams/{{ substitution().teamName | fileName }}/{{ substitution().playerToGoName | fileName }}.png" />
+            } @else {
+                @if (substitution().team == 'right') { <shirt [size]="4" [color]="game().rightTeamColor" /> }
+                @else { <shirt [size]="4" [color]="game().leftTeamColor" /> }
+            }
             <span class="player-number">{{ substitution().playerToGoNumber }}</span>
             <span class="player-name">{{ substitution().playerToGoName }}</span>
         </div>

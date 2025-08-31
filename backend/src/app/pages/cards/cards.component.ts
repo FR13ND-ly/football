@@ -28,13 +28,15 @@ export class CardsComponent {
 
 
   onAddCard(team: string) {
-    const dialogRef = this.dialog.open(AddCardDialogComponent);
+    let teamName = team == 'left' ? this.game().leftTeamName : this.game().rightTeamName;
+    const dialogRef = this.dialog.open(AddCardDialogComponent, { data: teamName });
     dialogRef.afterClosed().subscribe((result) => {
       let data = {
         playerName: result?.playerName,
         playerNumber: result?.playerNumber,
         cardType: result?.cardType,
-        team
+        team,
+        teamName
       };  
       if (result) {
         this.cardsService.addCard(data);

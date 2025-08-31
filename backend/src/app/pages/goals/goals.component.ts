@@ -28,12 +28,14 @@ export class GoalsComponent {
 
 
   onAddGoal(team: string) {
-    let d = this.dialog.open(AddGoalDialogComponent)
+    let teamName = team == 'left' ? this.game().leftTeamName : this.game().rightTeamName;
+    let d = this.dialog.open(AddGoalDialogComponent, {data: teamName })
     d.afterClosed().subscribe(result => {
       let data = {
         playerName: result?.playerName,
         playerNumber: result?.playerNumber,
-        team: team
+        team,
+        teamName
       }
       if (result) {
         this.goalsService.addGoal(data)

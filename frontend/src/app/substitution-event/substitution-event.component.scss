@@ -7,10 +7,16 @@
     position: relative;
 }
 
-img {
-
+.illustration {
     width: 10rem;
     height: fit-content;
+}
+
+.player-image {
+    width: 3.75rem;
+    height: 5rem;
+    object-fit: cover;
+    margin-right: 1rem;
 }
 
 h1 {

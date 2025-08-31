@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <h1>Adaugă cartonaș</h1>
     <div class="player">
-        <input formControlName="playerNumber" placeholder="Număr">
+        <input formControlName="playerNumber" placeholder="Număr" (ngModelChange)="onChangeValue(playerNumberInput.value)" #playerNumberInput>
         <input formControlName="playerName" placeholder="Nume">
     </div>
     <select formControlName="cardType">

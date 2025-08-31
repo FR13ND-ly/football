@@ -4,7 +4,11 @@
   <input class="championship-title" formControlName="championshipTitle" required>
   <div class="content">
     <div class="team">
-      <input class="team-name-input" formControlName="leftTeamName" required>
+      <select class="team-name-input" formControlName="leftTeamName" (change)="onTeamChange(gameForm.get('leftTeamName')?.value, 'left')">
+        @for (team of teams; track team.id) {
+        <option [value]="team.name">{{ team.name }}</option>
+        }
+      </select>
       <shirt size="24" [color]="{
       hands: gameForm.get('leftTeamColor.hands')?.value || '',
       shirt: gameForm.get('leftTeamColor.shirt')?.value || ''
@@ -40,7 +44,11 @@
     </div>
 
     <div class="team">
-      <input class="team-name-input" formControlName="rightTeamName" required>
+      <select class="team-name-input" formControlName="rightTeamName" (change)="onTeamChange(gameForm.get('rightTeamName')?.value, 'right')">
+        @for (team of teams; track team.id) {
+        <option [value]="team.name">{{ team.name }}</option>
+        }
+      </select>
       <shirt size="24" [color]="{
         hands: gameForm.get('rightTeamColor.hands')?.value || '',
         shirt: gameForm.get('rightTeamColor.shirt')?.value || ''
