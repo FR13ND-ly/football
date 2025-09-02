@@ -1,0 +1,29 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+button {
+    background-color: #353535;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: .4rem;
+    cursor: pointer;
+    &:hover {
+        background-color: #000;
+    }
+}
+
+.wrapper {
+    display: flex;
+    
+}

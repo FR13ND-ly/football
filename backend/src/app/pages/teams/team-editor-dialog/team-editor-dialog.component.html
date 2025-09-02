@@ -1,0 +1,6 @@
+<form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+    <input formControlName="name">
+    <input formControlName="shirt" type="color">
+    <input formControlName="hands" type="color">
+    <button type="submit">Save</button>
+</form>

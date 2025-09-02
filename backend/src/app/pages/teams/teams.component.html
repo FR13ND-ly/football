@@ -1,0 +1,16 @@
+<h1>Jucători</h1>
+<div class="wrapper">
+    <div class="teams">
+        <div class="header">
+            <h2>Echipe</h2>
+            <button (click)="onAddTeam()">Add Team</button>
+        </div>
+        @for (team of teams(); track team.key) {
+            <div class="team" [style.backgroundColor]="team.shirt">
+                <span>{{ team.name }}</span>
+                <button (click)="onEditTeam(team)">Edit</button>
+                <button (click)="onDeleteTeam(team)">Delete</button>
+            </div>
+        }
+    </div>
+</div>
