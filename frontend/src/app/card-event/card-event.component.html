@@ -7,12 +7,12 @@
     <span class="card-time">{{ card().time }}</span>
     <div class="card-details">
         <div class="player">
-            @if (card().playerName != '') {
+            <!-- @if (card().playerName != '') {
                 <img class="player-image" src="/teams/{{ card().teamName | fileName }}/{{ card().playerName | fileName }}.png" />
-            } @else {
+            } @else { -->
                 @if (card().team == 'left') { <shirt [size]="5" [color]="game().leftTeamColor" /> }
                 @else { <shirt [size]="5" [color]="game().rightTeamColor" /> }
-            }
+            <!-- } -->
             <span class="player-number">{{ card().playerNumber }}</span>
             @if (card().playerName != '') {
                 <span class="player-name">, {{ card().playerName }}</span>
