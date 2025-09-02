@@ -35,6 +35,7 @@ export class CardsComponent {
         playerName: result?.playerName,
         playerNumber: result?.playerNumber,
         cardType: result?.cardType,
+        photo: result?.photo,
         team,
         teamName
       };  

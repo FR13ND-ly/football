@@ -1,6 +1,9 @@
+<h2>{{ data.team.name ? 'Editează' : 'Adaugă' }} echipa</h2>
 <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
-    <input formControlName="name">
-    <input formControlName="shirt" type="color">
-    <input formControlName="hands" type="color">
-    <button type="submit">Save</button>
+    <input class="input" formControlName="name">
+    <div class="colors">
+        <input formControlName="shirt" type="color">
+        <input formControlName="hands" type="color">
+    </div>
+    <button type="submit">Continuă</button>
 </form>

@@ -1,1 +1,22 @@
-<p>player-editor-dialog works!</p>
+@if (playerForm.get('photo')?.value) {
+<img [src]="playerForm.get('photo')?.value" class="max-w-xs border rounded" />
+}
+@else {
+    <div class="image-placeholder-wrapper">
+        <div class="image-placeholder"></div>
+        <span class="material-symbols-outlined">add_a_photo</span>
+    </div>
+}
+<section>
+    <h2>{{ data.player.name ? 'Editează' : 'Adaugă' }} jucătorul</h2>
+    <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+        <div class="player">
+            <input placeholder="Număr" formControlName="matchNumber" placeholder="Număr">
+            <input placeholder="Nume" formControlName="name" placeholder="Nume">
+        </div>
+        <div>
+            <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+        </div>
+        <button type="submit">Continuă</button>
+    </form>
+</section>

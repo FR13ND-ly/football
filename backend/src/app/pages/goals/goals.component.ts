@@ -34,6 +34,7 @@ export class GoalsComponent {
       let data = {
         playerName: result?.playerName,
         playerNumber: result?.playerNumber,
+        photo: result?.photo,
         team,
         teamName
       }

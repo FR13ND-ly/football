@@ -1,9 +1,9 @@
-<!-- @if (goal().playerName != '') {
-    <img src="/teams/{{ goal().teamName | fileName }}/{{ goal().playerName | fileName }}.png" />
-} @else { -->
+@if (goal().photo != '') {
+    <img [src]="goal().photo" />
+} @else {
     @if (goal().team == 'left') { <shirt [size]="8" [color]="game().leftTeamColor" /> }
     @else { <shirt [size]="8" [color]="game().rightTeamColor" /> }
-<!-- } -->
+}
 <div class="info">
     <span class="goal-time">{{ goal().time }}</span>
     <h1>Goal!</h1>

@@ -3,14 +3,49 @@
     <div class="teams">
         <div class="header">
             <h2>Echipe</h2>
-            <button (click)="onAddTeam()">Add Team</button>
+            <button (click)="onAddTeam()"><span class="material-symbols-outlined">group_add</span></button>
         </div>
+        <div class="teams-list">
         @for (team of teams(); track team.key) {
-            <div class="team" [style.backgroundColor]="team.shirt">
+            <div class="team" (click)="onSelectTeam($index)" [class.selected]="selectedIndex() === $index">
                 <span>{{ team.name }}</span>
-                <button (click)="onEditTeam(team)">Edit</button>
-                <button (click)="onDeleteTeam(team)">Delete</button>
             </div>
         }
+        </div>
     </div>
+    @if (selectedIndex() >= 0) {
+        <div class="players">
+            <div class="team-header">
+                <shirt size="3" [color]="{
+                    hands: teams()[selectedIndex()].hands,
+                    shirt: teams()[selectedIndex()].shirt
+                }" />
+            <div class="header">
+                <h1>Echipa: {{ teams()[selectedIndex()].name }}</h1>
+                <div class="actions">
+                    <button (click)="onEditTeam()"><span class="material-symbols-outlined">edit</span></button>
+                    <button (click)="onDeleteTeam()"><span class="material-symbols-outlined">delete</span></button>
+                </div>
+            </div>
+            </div>
+            <div class="header">
+                <h2>Jucători</h2>
+                <button (click)="onAddPlayer()"><span class="material-symbols-outlined">person_add</span></button>
+            </div>
+            <div class="players-list">
+                @for (player of players(); track player.key;) {
+                <div class="player">
+                    <div class="details">
+                        <img class="player-photo" [src]="player.photo"/>
+                        <span><b>{{ player.matchNumber }}</b> | {{ player.name }} </span>
+                    </div>
+                    <div class="actions">
+                        <button (click)="onEditPlayer(player)"><span class="material-symbols-outlined">edit</span></button>
+                        <button (click)="onDeletePlayer(player)"><span class="material-symbols-outlined">delete</span></button>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+    }
 </div>

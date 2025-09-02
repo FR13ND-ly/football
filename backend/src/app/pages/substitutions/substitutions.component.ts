@@ -32,8 +32,10 @@ export class SubstitutionsComponent {
       let data = {
         playerToComeName: result?.playerToComeName,
         playerToComeNumber: result?.playerToComeNumber,
+        playerToComePhoto: result?.playerToComePhoto,
         playerToGoName: result?.playerToGoName,
         playerToGoNumber: result?.playerToGoNumber,
+        playerToGoPhoto: result?.playerToGoPhoto,
         team,
         teamName
       };  

@@ -5,7 +5,7 @@
   <div class="content">
     <div class="team">
       <select class="team-name-input" formControlName="leftTeamName" (change)="onTeamChange(gameForm.get('leftTeamName')?.value, 'left')">
-        @for (team of teams; track team.id) {
+        @for (team of teams(); track team.id) {
         <option [value]="team.name">{{ team.name }}</option>
         }
       </select>
@@ -45,7 +45,7 @@
 
     <div class="team">
       <select class="team-name-input" formControlName="rightTeamName" (change)="onTeamChange(gameForm.get('rightTeamName')?.value, 'right')">
-        @for (team of teams; track team.id) {
+        @for (team of teams(); track team.id) {
         <option [value]="team.name">{{ team.name }}</option>
         }
       </select>

@@ -1,6 +1,7 @@
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-team-editor-dialog',
@@ -10,13 +11,13 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './team-editor-dialog.component.scss'
 })
 export class TeamEditorDialogComponent implements OnInit {
-  dialog = inject(DialogRef)
+  dialog = inject(MatDialogRef)
   data = inject(DIALOG_DATA)
   fb = new FormBuilder();
 
   teamForm = this.fb.group({
     name: [''],
-    shirt: ['#ffffff'],
+    shirt: ['#ff0000'],
     hands: ['#000000']
   });
 

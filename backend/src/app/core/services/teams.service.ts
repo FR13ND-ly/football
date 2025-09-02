@@ -9,7 +9,7 @@ export class TeamsService {
 
   teamsRef = ref(this.db, 'teams');
   teams: any = signal([])
-  player: any = signal([]);
+  players: any = signal([]);
 
   constructor() {
     onValue(this.teamsRef, (snapshot) => {
@@ -32,17 +32,18 @@ export class TeamsService {
     get(ref(this.db, `teams/${teamKey}/players`)).then((snapshot) => {
       const data = snapshot.val();
       if (!data) {
-        this.player.set([]);
+        this.players.set([]);
         return;
       }
-      this.player.set(
+
+      this.players.set(
         Object.entries(data).map(([key, el]: [string, any]) => {
           el.key = key;
           return el;
-        })
+        }).sort((a: any, b: any) => a.matchNumber - b.matchNumber)
       );
     });
-    return this.player;
+    return this.players;
   }
 
 
@@ -75,5 +76,13 @@ export class TeamsService {
   deletePlayer(teamKey: string, playerKey: string) {
     const playerRef = ref(this.db, `teams/${teamKey}/players/${playerKey}`);
     set(playerRef, null);
+  }
+
+  getTeamKeyByName(name: string): string | undefined {
+    this.teams().forEach((element: any) => {
+      console.log(element.name, name);
+    });
+    const team = this.teams().find((t: any) => t.name == name);
+    return team ? team.key : undefined;
   }
 }

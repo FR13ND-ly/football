@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { teams } from '../../../core/data/teams';
+import { TeamsService } from '../../../core/services/teams.service';
 
 @Component({
   selector: 'app-add-card-dialog',
@@ -14,20 +14,23 @@ export class AddCardDialogComponent {
   team = inject(MAT_DIALOG_DATA);
   dialogRef = inject(MatDialogRef);
   fb = new FormBuilder();
+  teamsService = inject(TeamsService)
+
 
   form = this.fb.group({
     playerName: [''],
     playerNumber: ['', Validators.required],
     cardType: ['yellow', Validators.required],
+    photo: ['']
   });
 
-  players = teams.find(t => t.name === this.team)?.players || [];
-  
   onChangeValue(playerNumber: any) {
-    const player = this.players.find(p => p.matchNumber == playerNumber);
+    const player: any = Object.values(this.teamsService.teams().find((t: any) => t.name == this.team)?.players).find((p: any) => p.matchNumber == playerNumber);
+    this.form.patchValue({ photo: '' })
     if (player) {
       this.form.patchValue({
-        playerName: player.name
+        playerName: player.name,
+        photo: player.photo || ''
       });
     }
   }
