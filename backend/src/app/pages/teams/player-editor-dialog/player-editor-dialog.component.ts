@@ -67,7 +67,7 @@ export class PlayerEditorDialogComponent implements OnInit {
           }
 
           ctx.drawImage(img, 0, 0, width, height);
-          const dataUrl = elem.toDataURL('image/jpeg', quality);
+          const dataUrl = elem.toDataURL('image/webp', quality);
           resolve(dataUrl);
         };
 

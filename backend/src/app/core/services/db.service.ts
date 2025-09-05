@@ -1,7 +1,6 @@
-import { inject, Injectable, signal } from '@angular/core';
-import { getDatabase, ref, onValue, set } from "firebase/database";
-import { AppComponent } from '../../app.component';
-import { FormBuilder, RequiredValidator } from '@angular/forms';
+import { Injectable, signal } from '@angular/core';
+import { getDatabase, ref, onValue, set } from "firebase/database"
+import { FormBuilder } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'

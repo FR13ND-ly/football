@@ -18,7 +18,6 @@ export class InfoComponent implements OnInit {
   teamsService = inject(TeamsService);
 
   ngOnInit(): void {
-    console.log(this.dbService.game());
   }
 
   onUpdateGame() {
